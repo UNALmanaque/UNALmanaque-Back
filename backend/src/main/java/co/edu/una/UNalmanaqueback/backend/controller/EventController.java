@@ -13,10 +13,13 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
     @PostMapping(path = "/event")
-    public @ResponseBody String addNewEvent(@RequestParam Boolean rep, @RequestParam String name) {
+    public @ResponseBody String addNewEvent(@RequestParam Integer week, @RequestParam Integer rep, @RequestParam String name, @RequestParam String color, @RequestParam Integer priority) {
         Event newEvent = new Event();
+        newEvent.setEventWeek(week);
         newEvent.setEventRep(rep);
         newEvent.setEventName(name);
+        newEvent.setEventColor(color);
+        newEvent.setEventPriority(priority);
         eventRepository.save(newEvent);
         return "Saved";
     }

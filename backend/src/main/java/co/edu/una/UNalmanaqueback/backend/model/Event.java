@@ -13,8 +13,11 @@ public class Event {
     private Integer eventId;
     private Date eventStartDate;
     private Date eventEndDate;
-    private Boolean eventRep;
+    private Integer eventWeek;
+    private Integer eventRep;
     private String eventName;
+    private String eventColor;
+    private Integer eventPriority;
 
     public Integer getEventId() {
         return eventId;
@@ -34,10 +37,16 @@ public class Event {
     public void setEventEndDate(Date eventEndDate) {
         this.eventEndDate = eventEndDate;
     }
-    public Boolean getEventRep() {
+    public Integer getEventWeek() {
+        return eventWeek;
+    }
+    public void setEventWeek(Integer eventWeek) {
+        this.eventWeek = eventWeek;
+    }
+    public Integer getEventRep() {
         return eventRep;
     }
-    public void setEventRep(Boolean eventRep) {
+    public void setEventRep(Integer eventRep) {
         this.eventRep = eventRep;
     }
     public String getEventName() {
@@ -51,6 +60,18 @@ public class Event {
     }
     public void setCategory(Category category) {
         this.category = category;
+    }
+    public String getEventColor() {
+        return eventColor;
+    }
+    public void setEventColor(String eventColor) {
+        this.eventColor = eventColor;
+    }
+    public Integer getEventPriority() {
+        return eventPriority;
+    }
+    public void setEventPriority(Integer eventPriority) {
+        this.eventPriority = eventPriority;
     }
     //Foreign Keys
     @ManyToOne
