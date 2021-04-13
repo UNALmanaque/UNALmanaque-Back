@@ -9,13 +9,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/register/api")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
     @PostMapping(path = "/user")
+    @ResponseBody
+    public String addNewUser (@RequestBody User user) {
+        userRepository.save(user);
+        return "Saved";
+    }
+     /*
     public @ResponseBody String addNewUser (@RequestParam String userName, @RequestParam String userEmail, @RequestParam String userPassword) {
         User newUser = new User();
         newUser.setUserName(userName);
@@ -24,6 +35,7 @@ public class UserController {
         userRepository.save(newUser);
         return "Saved";
     }
+    */
     @GetMapping(path = "/user")
     public @ResponseBody Iterable<User> getAllUsers() {
         return userRepository.findAll();
