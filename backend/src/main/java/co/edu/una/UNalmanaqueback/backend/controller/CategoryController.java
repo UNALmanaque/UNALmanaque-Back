@@ -7,7 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/api")
 public class CategoryController {
     @Autowired
@@ -18,16 +19,6 @@ public class CategoryController {
         categoryRepository.save(category);
         return "saved";
     }
-    /*
-    @PostMapping(path = "/category")
-    public @ResponseBody String addCategory (@RequestParam String categoryName) {
-        Category newCategory = new Category();
-        newCategory.setCategoryName(categoryName);
-        categoryRepository.save(newCategory);
-        return "Saved";
-    }
-    */
-
     @GetMapping(path = "/category")
     public @ResponseBody Iterable<Category> getAllUsers(){
         return categoryRepository.findAll();

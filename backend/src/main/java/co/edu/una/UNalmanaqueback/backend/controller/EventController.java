@@ -8,20 +8,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RequestMapping("/api")
 public class EventController {
     @Autowired
     private EventRepository eventRepository;
     @PostMapping(path = "/event")
-    public @ResponseBody String addNewEvent(@RequestParam Boolean rep, @RequestParam String name) {
-        Event newEvent = new Event();
-        newEvent.setEventRep(rep);
-        newEvent.setEventName(name);
-        eventRepository.save(newEvent);
-        return "Saved";
+    @ResponseBody
+    public String addNewEvent(@RequestBody Event event) {
+        eventRepository.save(event);
+        return "saved";
     }
-
     @GetMapping(path = "/event")
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();

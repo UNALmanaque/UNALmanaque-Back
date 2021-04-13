@@ -26,16 +26,6 @@ public class UserController {
         userRepository.save(user);
         return "Saved";
     }
-     /*
-    public @ResponseBody String addNewUser (@RequestParam String userName, @RequestParam String userEmail, @RequestParam String userPassword) {
-        User newUser = new User();
-        newUser.setUserName(userName);
-        newUser.setUserEmail(userEmail);
-        newUser.setUserPassword(userPassword);
-        userRepository.save(newUser);
-        return "Saved";
-    }
-    */
     @GetMapping(path = "/user")
     public @ResponseBody Iterable<User> getAllUsers() {
         return userRepository.findAll();
