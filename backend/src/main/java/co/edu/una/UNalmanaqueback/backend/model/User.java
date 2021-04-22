@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "User", schema = "unalmanaquedb")
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer userId;
     private String userName;
     private String userEmail;

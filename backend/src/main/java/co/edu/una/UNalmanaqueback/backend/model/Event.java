@@ -15,6 +15,10 @@ public class Event {
     private Date eventEndDate;
     private Boolean eventRep;
     private String eventName;
+    private String eventColor;
+    private Integer eventPriority;
+    private Integer eventDaily;
+    private Integer eventWeek;
 
     public Integer getEventId() {
         return eventId;
@@ -51,6 +55,30 @@ public class Event {
     }
     public void setCategory(Category category) {
         this.category = category;
+    }
+    public String getEventColor() {
+        return eventColor;
+    }
+    public void setEventColor(String eventColor) {
+        this.eventColor = eventColor;
+    }
+    public Integer getEventPriority() {
+        return eventPriority;
+    }
+    public void setEventPriority(Integer eventPriority) {
+        this.eventPriority = eventPriority;
+    }
+    public Integer getEventDaily() {
+        return eventDaily;
+    }
+    public void setEventDaily(Integer eventDaily) {
+        this.eventDaily = eventDaily;
+    }
+    public Integer getEventWeek() {
+        return eventWeek;
+    }
+    public void setEventWeek(Integer eventWeek) {
+        this.eventWeek = eventWeek;
     }
     //Foreign Keys
     @ManyToOne

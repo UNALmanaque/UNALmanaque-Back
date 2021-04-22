@@ -2,9 +2,7 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
