@@ -5,9 +5,8 @@ import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class EventController {
     @Autowired
