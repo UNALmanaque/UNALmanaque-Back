@@ -18,6 +18,11 @@ public class Event {
     private String eventName;
     private String eventColor;
     private Integer eventPriority;
+<<<<<<< HEAD
+=======
+    private Integer eventDaily;
+    private Integer eventWeek;
+>>>>>>> jherson
 
     public Integer getEventId() {
         return eventId;
@@ -73,6 +78,21 @@ public class Event {
     public void setEventPriority(Integer eventPriority) {
         this.eventPriority = eventPriority;
     }
+<<<<<<< HEAD
+=======
+    public Integer getEventDaily() {
+        return eventDaily;
+    }
+    public void setEventDaily(Integer eventDaily) {
+        this.eventDaily = eventDaily;
+    }
+    public Integer getEventWeek() {
+        return eventWeek;
+    }
+    public void setEventWeek(Integer eventWeek) {
+        this.eventWeek = eventWeek;
+    }
+>>>>>>> jherson
     //Foreign Keys
     @ManyToOne
     @JoinColumn(name = "categoryId")

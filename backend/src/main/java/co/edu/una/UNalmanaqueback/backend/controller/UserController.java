@@ -4,28 +4,27 @@ import co.edu.una.UNalmanaqueback.backend.model.User;
 import co.edu.una.UNalmanaqueback.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/api")
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping("/register/api")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
     @PostMapping(path = "/user")
-    public @ResponseBody String addNewUser (@RequestParam String userName, @RequestParam String userEmail, @RequestParam String userPassword) {
-        User newUser = new User();
-        newUser.setUserName(userName);
-        newUser.setUserEmail(userEmail);
-        newUser.setUserPassword(userPassword);
-        userRepository.save(newUser);
+    @ResponseBody
+    public String addNewUser (@RequestBody User user) {
+        userRepository.save(user);
         return "Saved";
     }
     @GetMapping(path = "/user")
     public @ResponseBody Iterable<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping(path = "user/find/{userEmail}")
+    public User getUserByEmail(@PathVariable(value = "userEmail") String userEmail) {
+        return userRepository.findUserByEmail(userEmail);
     }
 }
