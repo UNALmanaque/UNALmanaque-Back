@@ -50,5 +50,5 @@ public class User {
     //Foreign Keys
     @JsonIgnore
     @OneToMany (mappedBy = "user")
-    private List<Event> users;
+    private List<Event> events;
 }

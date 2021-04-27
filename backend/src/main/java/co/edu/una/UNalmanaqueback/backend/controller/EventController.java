@@ -5,6 +5,8 @@ import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
@@ -20,5 +22,10 @@ public class EventController {
     @GetMapping(path = "/event")
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();
+    }
+
+    @GetMapping(path = "/event/find/{userEvents}")
+    public List<Event> getEventsByUser(@PathVariable(value = "userEvents") Integer userId) {
+        return eventRepository.getEventsByUser(userId);
     }
 }

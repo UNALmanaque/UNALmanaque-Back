@@ -23,7 +23,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping(path = "/user/find/{userEmail}")
+    @GetMapping(path = "/user/find/{userEmail}") //permite la busqueda de usuario por email
     public User getUserByEmail(@PathVariable(value = "userEmail") String userEmail) {
         return userRepository.findUserByEmail(userEmail);
     }
