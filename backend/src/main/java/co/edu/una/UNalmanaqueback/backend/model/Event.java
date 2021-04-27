@@ -64,6 +64,12 @@ public class Event {
     public void setCategory(Category category) {
         this.category = category;
     }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
     public String getEventColor() {
         return eventColor;
     }
@@ -93,6 +99,6 @@ public class Event {
     @JoinColumn(name = "categoryId")
     private Category category;
     @ManyToOne
-    @JoinColumn(name = "userEmail")
+    @JoinColumn(name = "userId")
     private User user;
 }
