@@ -25,7 +25,7 @@ public class EventController {
     }
 
     @GetMapping(path = "/event/find/{userEvents}")
-    public List<Event> getEventsByUser(@PathVariable(value = "userEvents") Integer userId) {
-        return eventRepository.getEventsByUser(userId);
+    public List<Event> getEventsByUser(@PathVariable(value = "userEvents") String userEmail) {
+        return eventRepository.getEventsByUser(userEmail);
     }
 }
