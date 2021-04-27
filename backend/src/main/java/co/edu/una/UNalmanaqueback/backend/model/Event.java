@@ -11,13 +11,21 @@ public class Event {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer eventId;
+    @Column
     private Date eventStartDate;
+    @Column
     private Date eventEndDate;
+    @Column
     private Boolean eventRep;
+    @Column
     private String eventName;
+    @Column
     private String eventColor;
+    @Column
     private Integer eventPriority;
+    @Column
     private Integer eventDaily;
+    @Column
     private Integer eventWeek;
 
     public Integer getEventId() {
@@ -85,6 +93,6 @@ public class Event {
     @JoinColumn(name = "categoryId")
     private Category category;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userEmail")
     private User user;
 }

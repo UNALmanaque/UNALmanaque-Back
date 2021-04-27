@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/register/api")
+@RequestMapping("/api")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -23,7 +23,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping(path = "user/find/{userEmail}")
+    @GetMapping(path = "/user/find/{userEmail}")
     public User getUserByEmail(@PathVariable(value = "userEmail") String userEmail) {
         return userRepository.findUserByEmail(userEmail);
     }

@@ -10,6 +10,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer categoryId;
+    @Column
     private String categoryName;
 
     public Integer getCategoryId() {
