@@ -24,7 +24,6 @@ public class EventController {
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();
     }
-
     @GetMapping(path = "/event/find/{userId}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
         return eventRepository.getEventsByUser(userId);
