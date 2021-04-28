@@ -32,4 +32,26 @@ public class EventController {
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
         eventRepository.deleteById(eventId);
     }
+    @PutMapping(path = "/event/update/{eventId}")
+    Event updateEvent(@RequestBody Event newEvent, @PathVariable Integer eventId) {
+        return eventRepository.findById(eventId)
+                .map(event -> {
+                    event.setEventName(newEvent.getEventName());
+                    event.setEventStartDate(newEvent.getEventStartDate());
+                    event.setEventEndDate(newEvent.getEventEndDate());
+                    event.setEventRep(newEvent.getEventRep());
+                    event.setCategory(newEvent.getCategory());
+                    event.setEventColor(newEvent.getEventColor());
+                    event.setUser(newEvent.getUser());
+                    event.setEventDaily(newEvent.getEventDaily());
+                    event.setEventWeek(newEvent.getEventWeek());
+                    event.setEventPriority(newEvent.getEventPriority());
+                    return eventRepository.save(event);
+
+                })
+                .orElseGet(() -> {
+                    newEvent.setEventId(eventId);
+                    return eventRepository.save(newEvent);
+                });
+    }
 }
