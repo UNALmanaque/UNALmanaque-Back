@@ -12,9 +12,13 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer userId;
+    @Column
     private String userName;
+    @Column
     private String userEmail;
+    @Column
     private String userPassword;
+    @Column
     private Date userBorn;
 
     public Integer getUserId() {
@@ -50,5 +54,5 @@ public class User {
     //Foreign Keys
     @JsonIgnore
     @OneToMany (mappedBy = "user")
-    private List<Event> users;
+    private List<Event> events;
 }

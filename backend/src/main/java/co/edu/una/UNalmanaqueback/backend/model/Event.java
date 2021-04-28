@@ -11,14 +11,22 @@ public class Event {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer eventId;
+    @Column
     private Date eventStartDate;
+    @Column
     private Date eventEndDate;
-    private Integer eventWeek;
-    private Integer eventRep;
+    @Column
+    private Boolean eventRep;
+    @Column
     private String eventName;
+    @Column
     private String eventColor;
+    @Column
     private Integer eventPriority;
+    @Column
     private Integer eventDaily;
+    @Column
+    private Integer eventWeek;
 
     public Integer getEventId() {
         return eventId;
@@ -38,16 +46,10 @@ public class Event {
     public void setEventEndDate(Date eventEndDate) {
         this.eventEndDate = eventEndDate;
     }
-    public Integer getEventWeek() {
-        return eventWeek;
-    }
-    public void setEventWeek(Integer eventWeek) {
-        this.eventWeek = eventWeek;
-    }
-    public Integer getEventRep() {
+    public Boolean getEventRep() {
         return eventRep;
     }
-    public void setEventRep(Integer eventRep) {
+    public void setEventRep(Boolean eventRep) {
         this.eventRep = eventRep;
     }
     public String getEventName() {
@@ -61,6 +63,12 @@ public class Event {
     }
     public void setCategory(Category category) {
         this.category = category;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
     public String getEventColor() {
         return eventColor;
@@ -79,6 +87,12 @@ public class Event {
     }
     public void setEventDaily(Integer eventDaily) {
         this.eventDaily = eventDaily;
+    }
+    public Integer getEventWeek() {
+        return eventWeek;
+    }
+    public void setEventWeek(Integer eventWeek) {
+        this.eventWeek = eventWeek;
     }
     //Foreign Keys
     @ManyToOne

@@ -2,8 +2,11 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
+import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -12,16 +15,6 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
     @PostMapping(path = "/event")
-    public @ResponseBody String addNewEvent(@RequestParam Integer week, @RequestParam Integer rep, @RequestParam String name, @RequestParam String color, @RequestParam Integer priority) {
-        Event newEvent = new Event();
-        newEvent.setEventWeek(week);
-        newEvent.setEventRep(rep);
-        newEvent.setEventName(name);
-        newEvent.setEventColor(color);
-        newEvent.setEventPriority(priority);
-        eventRepository.save(newEvent);
-        return "Saved";
-    }
     @ResponseBody
     public String addNewEvent(@RequestBody Event event) {
         eventRepository.save(event);
@@ -30,5 +23,13 @@ public class EventController {
     @GetMapping(path = "/event")
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();
+    }
+    @GetMapping(path = "/event/find/{userEmail}")
+    public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userEmail") String userEmail) {
+        return eventRepository.getEventsByUser(userEmail);
+    }
+    @DeleteMapping(path = "/event/delete/{eventId}")
+    public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
+        eventRepository.deleteById(eventId);
     }
 }
