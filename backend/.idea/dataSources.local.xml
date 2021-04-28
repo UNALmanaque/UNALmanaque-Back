@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="backend/Hibernate" uuid="ed09662d-b206-4528-81d2-7729a22fcabd">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <user-name>springuser</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

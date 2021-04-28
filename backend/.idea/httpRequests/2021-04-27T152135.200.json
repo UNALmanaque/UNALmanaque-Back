@@ -1,0 +1,149 @@
+[
+  {
+    "userId": 2,
+    "userName": "user",
+    "userEmail": "mail",
+    "userPassword": "123",
+    "userBorn": null
+  },
+  {
+    "userId": 4,
+    "userName": "cooking",
+    "userEmail": "email",
+    "userPassword": "pass",
+    "userBorn": null
+  },
+  {
+    "userId": 5,
+    "userName": "usuario",
+    "userEmail": "mai",
+    "userPassword": "123",
+    "userBorn": null
+  },
+  {
+    "userId": 6,
+    "userName": "",
+    "userEmail": "",
+    "userPassword": "",
+    "userBorn": null
+  },
+  {
+    "userId": 7,
+    "userName": null,
+    "userEmail": null,
+    "userPassword": null,
+    "userBorn": null
+  },
+  {
+    "userId": 8,
+    "userName": null,
+    "userEmail": null,
+    "userPassword": null,
+    "userBorn": null
+  },
+  {
+    "userId": 9,
+    "userName": "cooking",
+    "userEmail": "email",
+    "userPassword": "pass",
+    "userBorn": null
+  },
+  {
+    "userId": 10,
+    "userName": "cooking",
+    "userEmail": "email",
+    "userPassword": "asdfasdfs",
+    "userBorn": null
+  },
+  {
+    "userId": 11,
+    "userName": null,
+    "userEmail": null,
+    "userPassword": null,
+    "userBorn": null
+  },
+  {
+    "userId": 12,
+    "userName": "jnomre",
+    "userEmail": "xyz@xyz.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 13,
+    "userName": "name",
+    "userEmail": "test@test.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 14,
+    "userName": "cosa",
+    "userEmail": "cosa@cosa.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 16,
+    "userName": "mail",
+    "userEmail": "mail@mail.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 19,
+    "userName": "l",
+    "userEmail": "l@l.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 20,
+    "userName": "x",
+    "userEmail": "x@x.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 22,
+    "userName": "q",
+    "userEmail": "q@q.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 24,
+    "userName": "test",
+    "userEmail": "test1@test1.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 25,
+    "userName": "test2",
+    "userEmail": "test2@test2.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 26,
+    "userName": "test3",
+    "userEmail": "test3@test3.com",
+    "userPassword": "123456",
+    "userBorn": null
+  },
+  {
+    "userId": 27,
+    "userName": "daguillenr",
+    "userEmail": "daguillenr@unal.edu.co",
+    "userPassword": "123456",
+    "userBorn": "2000-04-26"
+  },
+  {
+    "userId": 43,
+    "userName": null,
+    "userEmail": null,
+    "userPassword": null,
+    "userBorn": null
+  }
+]
