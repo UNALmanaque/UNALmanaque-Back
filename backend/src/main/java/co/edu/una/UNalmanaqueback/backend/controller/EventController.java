@@ -2,6 +2,7 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
+import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +27,9 @@ public class EventController {
     @GetMapping(path = "/event/find/{userEmail}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userEmail") String userEmail) {
         return eventRepository.getEventsByUser(userEmail);
+    }
+    @DeleteMapping(path = "/event/delete/{eventId}")
+    public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
+        eventRepository.deleteById(eventId);
     }
 }
