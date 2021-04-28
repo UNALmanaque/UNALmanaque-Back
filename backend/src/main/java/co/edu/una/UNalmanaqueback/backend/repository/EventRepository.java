@@ -15,5 +15,5 @@ public interface EventRepository extends CrudRepository<Event, Integer> {
     Iterable<Event> getEventsByUser(String userEmail);
     @Modifying
     @Query("DELETE FROM Event e WHERE e.eventId = ?1")
-    Event findEventsByEventId(Integer eventId);
+    Integer findEventsByEventId(Integer eventId);
 }
