@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends CrudRepository<Event, Integer> {
-    @Query("SELECT u FROM Event u WHERE u.user = ?1")
-    Iterable<Event> getEventsByUser(String userEmail);
+    @Query("SELECT u FROM Event u WHERE u.user.userId = ?1")
+    Iterable<Event> getEventsByUser(Integer userId);
 }

@@ -24,9 +24,10 @@ public class EventController {
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();
     }
-    @GetMapping(path = "/event/find/{userEmail}")
-    public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userEmail") String userEmail) {
-        return eventRepository.getEventsByUser(userEmail);
+
+    @GetMapping(path = "/event/find/{userId}")
+    public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
+        return eventRepository.getEventsByUser(userId);
     }
     @DeleteMapping(path = "/event/delete/{eventId}")
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
