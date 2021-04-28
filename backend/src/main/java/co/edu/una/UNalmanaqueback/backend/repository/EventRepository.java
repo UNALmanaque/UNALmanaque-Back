@@ -13,6 +13,7 @@ import java.util.List;
 public interface EventRepository extends CrudRepository<Event, Integer> {
     @Query("SELECT u FROM Event u WHERE u.user = ?1")
     Iterable<Event> getEventsByUser(String userEmail);
+    @Modifying
     @Query("DELETE FROM Event e WHERE e.eventId = ?1")
     Event findEventsByEventId(Integer eventId);
 }
