@@ -1,5 +1,6 @@
 package co.edu.una.UNalmanaqueback.backend.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,6 @@ import java.util.List;
 public interface EventRepository extends CrudRepository<Event, Integer> {
     @Query("SELECT u FROM Event u WHERE u.user = ?1")
     Iterable<Event> getEventsByUser(String userEmail);
+    @Query("DELETE FROM Event e WHERE e.eventId = ?1")
+    Event findEventsByEventId(Integer eventId);
 }
