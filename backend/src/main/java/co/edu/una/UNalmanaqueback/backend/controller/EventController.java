@@ -47,7 +47,6 @@ public class EventController {
                     event.setEventWeek(newEvent.getEventWeek());
                     event.setEventPriority(newEvent.getEventPriority());
                     return eventRepository.save(event);
-
                 })
                 .orElseGet(() -> {
                     newEvent.setEventId(eventId);

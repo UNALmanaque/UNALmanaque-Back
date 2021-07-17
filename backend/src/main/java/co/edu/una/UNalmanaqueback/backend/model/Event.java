@@ -27,6 +27,12 @@ public class Event {
     private Integer eventDaily;
     @Column
     private Integer eventWeek;
+    @Column
+    private Integer state;
+    @Column
+    private Integer curStreak;
+    @Column
+    private Integer maxStreak;
 
     public Integer getEventId() {
         return eventId;
@@ -94,6 +100,13 @@ public class Event {
     public void setEventWeek(Integer eventWeek) {
         this.eventWeek = eventWeek;
     }
+    public void setState(Integer state) { this.state = state; }
+    public Integer getState() {return this.state; }
+    public void setCurStreak(Integer curStreak) { this.curStreak = curStreak; }
+    public Integer getCurStreak() { return this.curStreak; }
+    public void setMaxStreak(Integer maxStreak) {this.maxStreak = maxStreak; }
+    public Integer getMaxStreak() { return this.maxStreak; }
+
     //Foreign Keys
     @ManyToOne
     @JoinColumn(name = "categoryId")
