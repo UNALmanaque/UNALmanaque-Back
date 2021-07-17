@@ -2,11 +2,10 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -27,6 +26,14 @@ public class EventController {
     @GetMapping(path = "/event/find/{userId}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
         return eventRepository.getEventsByUser(userId);
+    }
+    @GetMapping(path = "/even/find/sorted/{userId}")
+    public @ResponseBody Iterable<Event> getSortedEventsByUser(@PathVariable(value = "userId") Integer userId) {
+        List <Event> events = new ArrayList<Event>();
+        getEventsByUser(userId).forEach(events::add);
+        events.sort(Comparator.comparing(Event::getState));
+        return events;
+
     }
     @DeleteMapping(path = "/event/delete/{eventId}")
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
