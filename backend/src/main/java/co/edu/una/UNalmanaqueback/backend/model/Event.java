@@ -34,6 +34,8 @@ public class Event {
     private Integer curStreak;
     @Column
     private Integer maxStreak;
+    @Column
+    private Boolean done;
 
     public Integer getEventId() {
         return eventId;
@@ -101,6 +103,8 @@ public class Event {
     public void setEventWeek(Integer eventWeek) {
         this.eventWeek = eventWeek;
     }
+    public  void setDone(boolean done){ this.done = done;}
+    public Boolean getDone(){ return this.done;}
     public void setState(Integer state) { this.state = state; }
     public Integer getState() {
         int ans = 0;
@@ -114,8 +118,10 @@ public class Event {
          */
         if(today.after(this.eventStartDate) && today.before(this.eventStartDate)) {
             ans = 0;
-        }else {
+        }else if(getDone()){
             ans = 1;
+        }else{
+            ans = -1;
         }
         setState(ans);
         return this.state;
