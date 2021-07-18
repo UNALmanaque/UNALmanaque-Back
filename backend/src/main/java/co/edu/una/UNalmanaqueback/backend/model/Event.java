@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Event", schema = "unalmanaquedb")
@@ -101,7 +102,24 @@ public class Event {
         this.eventWeek = eventWeek;
     }
     public void setState(Integer state) { this.state = state; }
-    public Integer getState() {return this.state; }
+    public Integer getState() {
+        int ans = 0;
+        setState(ans);
+        LocalDate cur = LocalDate.now();
+        Date today = Date.valueOf(cur);
+        /*
+        0 -> progress
+        1 -> finished
+        -1 -> no finished
+         */
+        if(today.after(this.eventStartDate) && today.before(this.eventStartDate)) {
+            ans = 0;
+        }else {
+            ans = 1;
+        }
+        setState(ans);
+        return this.state;
+    }
     public void setCurStreak(Integer curStreak) { this.curStreak = curStreak; }
     public Integer getCurStreak() { return this.curStreak; }
     public void setMaxStreak(Integer maxStreak) {this.maxStreak = maxStreak; }
