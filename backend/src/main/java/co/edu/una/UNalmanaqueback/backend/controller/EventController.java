@@ -53,6 +53,10 @@ public class EventController {
                     event.setEventDaily(newEvent.getEventDaily());
                     event.setEventWeek(newEvent.getEventWeek());
                     event.setEventPriority(newEvent.getEventPriority());
+                    event.setDone(newEvent.getDone());
+                    event.setState(newEvent.getState());
+                    event.setCurStreak(newEvent.getCurStreak());
+                    event.setMaxStreak(newEvent.getMaxStreak());
                     return eventRepository.save(event);
                 })
                 .orElseGet(() -> {
