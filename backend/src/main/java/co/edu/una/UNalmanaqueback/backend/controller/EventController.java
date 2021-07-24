@@ -29,7 +29,7 @@ public class EventController {
     }
     @GetMapping(path = "/event/find/sorted/{userId}")
     public @ResponseBody Iterable<Event> getSortedEventsByUser(@PathVariable(value = "userId") Integer userId) {
-        List <Event> events = new ArrayList<Event>();
+        List <Event> events = new ArrayList<>();
         getEventsByUser(userId).forEach(events::add);
         events.sort(Comparator.comparing(Event::getEventState));
         return events;
