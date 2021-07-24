@@ -29,13 +29,13 @@ public class Event {
     @Column
     private Integer eventWeek;
     @Column
-    private Integer state;
+    private Integer eventState;
     @Column
-    private Integer curStreak;
+    private Integer eventCurStreak;
     @Column
-    private Integer maxStreak;
+    private Integer eventMaxStreak;
     @Column
-    private Boolean done;
+    private Integer eventDone;
 
     public Integer getEventId() {
         return eventId;
@@ -103,19 +103,18 @@ public class Event {
     public void setEventWeek(Integer eventWeek) {
         this.eventWeek = eventWeek;
     }
-    public  void setDone(boolean done){ this.done = done;}
-    public Boolean getDone(){ return this.done;}
-    public void setState(Integer state) { this.state = state; }
-    public Integer getState() {
+    public  void setEventDone(Integer eventDone){ this.eventDone = eventDone;}
+    public Integer getEventDone(){ return this.eventDone;}
+    public void setEventState(Integer eventState) { this.eventState = eventState; }
+    public Integer getEventState() {
+        /*
         int ans = 0;
         setState(ans);
         LocalDate cur = LocalDate.now();
         Date today = Date.valueOf(cur);
-        /*
         0 -> progress
         1 -> finished
         -1 -> no finished
-         */
         if(today.after(this.eventStartDate) && today.before(this.eventStartDate)) {
             ans = 0;
         }else if(getDone()){
@@ -124,12 +123,13 @@ public class Event {
             ans = -1;
         }
         setState(ans);
-        return this.state;
+         */
+        return this.eventState;
     }
-    public void setCurStreak(Integer curStreak) { this.curStreak = curStreak; }
-    public Integer getCurStreak() { return this.curStreak; }
-    public void setMaxStreak(Integer maxStreak) {this.maxStreak = maxStreak; }
-    public Integer getMaxStreak() { return this.maxStreak; }
+    public void setEventCurStreak(Integer eventCurStreak) { this.eventCurStreak = eventCurStreak; }
+    public Integer getEventCurStreak() { return this.eventCurStreak; }
+    public void setEventMaxStreak(Integer eventMaxStreak) {this.eventMaxStreak = eventMaxStreak; }
+    public Integer getEventMaxStreak() { return this.eventMaxStreak; }
 
     //Foreign Keys
     @ManyToOne

@@ -19,7 +19,7 @@ public class CategoryController {
         return "saved";
     }
     @GetMapping(path = "/category")
-    public @ResponseBody Iterable<Category> getAllUsers(){
+    public @ResponseBody Iterable<Category> getAllCategories(){
         return categoryRepository.findAll();
     }
 }
