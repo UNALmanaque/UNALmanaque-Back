@@ -23,15 +23,16 @@ public class EventController {
     public @ResponseBody Iterable<Event> getAllEvents() {
         return eventRepository.findAll();
     }
+
     @GetMapping(path = "/event/find/{userId}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
         return eventRepository.getEventsByUser(userId);
     }
-    @GetMapping(path = "/even/find/sorted/{userId}")
+    @GetMapping(path = "/event/find/sorted/{userId}")
     public @ResponseBody Iterable<Event> getSortedEventsByUser(@PathVariable(value = "userId") Integer userId) {
         List <Event> events = new ArrayList<Event>();
         getEventsByUser(userId).forEach(events::add);
-        events.sort(Comparator.comparing(Event::getState));
+        events.sort(Comparator.comparing(Event::getEventState));
         return events;
 
     }
@@ -53,15 +54,29 @@ public class EventController {
                     event.setEventDaily(newEvent.getEventDaily());
                     event.setEventWeek(newEvent.getEventWeek());
                     event.setEventPriority(newEvent.getEventPriority());
-                    event.setDone(newEvent.getDone());
-                    event.setState(newEvent.getState());
-                    event.setCurStreak(newEvent.getCurStreak());
-                    event.setMaxStreak(newEvent.getMaxStreak());
+                    event.setEventState(newEvent.getEventState());
+                    event.setEventCurStreak(newEvent.getEventCurStreak());
+                    event.setEventMaxStreak(newEvent.getEventMaxStreak());
+                    event.setEventDone(newEvent.getEventDone());
                     return eventRepository.save(event);
                 })
                 .orElseGet(() -> {
                     newEvent.setEventId(eventId);
                     return eventRepository.save(newEvent);
+                });
+    }
+    @PutMapping(path = "/event/update/streak/{eventId}")
+    Event updateEvent(@RequestBody Event updatedEvent, @PathVariable Integer eventcurStreak, @PathVariable Integer eventMaxStreak, @PathVariable Integer eventState, @PathVariable Integer eventId) {
+        return eventRepository.findById(eventId)
+                .map(event -> {
+                    event.setEventState(eventState);
+                    event.setEventCurStreak(eventcurStreak);
+                    event.setEventMaxStreak(eventMaxStreak);
+                    return eventRepository.save(event);
+                })
+                .orElseGet(() -> {
+                    updatedEvent.setEventId(eventId);
+                    return eventRepository.save(updatedEvent);
                 });
     }
 }
