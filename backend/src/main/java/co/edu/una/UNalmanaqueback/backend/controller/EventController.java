@@ -27,6 +27,7 @@ public class EventController {
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
         return eventRepository.getEventsByUser(userId);
     }
+
     @GetMapping(path = "/event/find/sorted/{userId}")
     public @ResponseBody Iterable<Event> getSortedEventsByUser(@PathVariable(value = "userId") Integer userId) {
         List <Event> events = new ArrayList<>();
@@ -39,7 +40,8 @@ public class EventController {
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
         eventRepository.deleteById(eventId);
     }
-    @PutMapping(path = "/event/update/{eventId}")
+
+    @PatchMapping(path = "/event/update/{eventId}")
     Event updateEvent(@RequestBody Event newEvent, @PathVariable Integer eventId) {
         return eventRepository.findById(eventId)
                 .map(event -> {
@@ -65,18 +67,12 @@ public class EventController {
                 });
     }
 
-    @PutMapping(path = "/event/update/streak/{eventId}")
-    Event updateEventStreak(@RequestBody Event updatedEvent, @PathVariable Integer eventId) {
-        return eventRepository.findById(eventId)
-                .map(event -> {
-                    event.setEventState(updatedEvent.getEventState());
-                    event.setEventCurStreak(updatedEvent.getEventCurStreak());
-                    event.setEventMaxStreak(updatedEvent.getEventMaxStreak());
-                    return eventRepository.save(event);
-                })
-                .orElseGet(() -> {
-                    updatedEvent.setEventId(eventId);
-                    return eventRepository.save(updatedEvent);
-                });
+    @PatchMapping(path = "/event/update/streak/{eventId}")
+    void updateEventStreak(@RequestBody Event updatedEvent, @PathVariable Integer eventId) {
+        Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
+        event.setEventCurStreak(updatedEvent.getEventCurStreak());
+        event.setEventMaxStreak(updatedEvent.getEventMaxStreak());
+        event.setEventState(updatedEvent.getEventState());
+        eventRepository.save(event);
     }
 }
