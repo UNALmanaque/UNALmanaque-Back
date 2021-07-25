@@ -64,13 +64,14 @@ public class EventController {
                     return eventRepository.save(newEvent);
                 });
     }
+
     @PutMapping(path = "/event/update/streak/{eventId}")
-    Event updateEvent(@RequestBody Event updatedEvent, @PathVariable Integer eventcurStreak, @PathVariable Integer eventMaxStreak, @PathVariable Integer eventState, @PathVariable Integer eventId) {
+    Event updateEventStreak(@RequestBody Event updatedEvent, @PathVariable Integer eventId) {
         return eventRepository.findById(eventId)
                 .map(event -> {
-                    event.setEventState(eventState);
-                    event.setEventCurStreak(eventcurStreak);
-                    event.setEventMaxStreak(eventMaxStreak);
+                    event.setEventState(updatedEvent.getEventState());
+                    event.setEventCurStreak(updatedEvent.getEventCurStreak());
+                    event.setEventMaxStreak(updatedEvent.getEventMaxStreak());
                     return eventRepository.save(event);
                 })
                 .orElseGet(() -> {
