@@ -2,9 +2,11 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 @RestController
@@ -25,7 +27,36 @@ public class EventController {
     }
     @GetMapping(path = "/event/find/{userId}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
-        return eventRepository.getEventsByUser(userId);
+        List<Event> events = new ArrayList<>();
+        getEventsByUser(userId).forEach(events::add);
+        // 0 --> no started
+        // 1 --> started
+        // 2 --> finished
+        // 3 --> no finished
+        for(Event e : events) {
+            int state = 0;
+            boolean done = e.getEventDone();
+            Date today = Date.valueOf(LocalDate.now());
+            if(today.before(e.getEventStartDate())){
+                state = 0;
+                e.setEventState(state);
+            }else if(!(today.before(e.getEventStartDate()) && today.after(e.getEventEndDate()))){
+                if(done) {
+                    state = 2;
+                }else{
+                    state = 1;
+                }
+                e.setEventState(state);
+            }else {
+                if(done) {
+                    state = 2;
+                }else{
+                    state = 3;
+                }
+                e.setEventState(state);
+            }
+        }
+        return events;
     }
 
     @GetMapping(path = "/event/find/sorted/{userId}")
@@ -34,7 +65,6 @@ public class EventController {
         getEventsByUser(userId).forEach(events::add);
         events.sort(Comparator.comparing(Event::getEventState));
         return events;
-
     }
     @DeleteMapping(path = "/event/delete/{eventId}")
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){

@@ -35,7 +35,7 @@ public class Event {
     @Column
     private Integer eventMaxStreak;
     @Column
-    private Integer eventDone;
+    private Boolean eventDone;
 
     public Integer getEventId() {
         return eventId;
@@ -103,8 +103,8 @@ public class Event {
     public void setEventWeek(Integer eventWeek) {
         this.eventWeek = eventWeek;
     }
-    public  void setEventDone(Integer eventDone){ this.eventDone = eventDone;}
-    public Integer getEventDone(){ return this.eventDone;}
+    public  void setEventDone(Boolean eventDone){ this.eventDone = eventDone;}
+    public Boolean getEventDone(){ return this.eventDone;}
     public void setEventState(Integer eventState) { this.eventState = eventState; }
     public Integer getEventState() {
         /*
