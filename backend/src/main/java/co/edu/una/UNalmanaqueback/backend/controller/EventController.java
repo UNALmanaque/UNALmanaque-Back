@@ -27,36 +27,7 @@ public class EventController {
     }
     @GetMapping(path = "/event/find/{userId}")
     public @ResponseBody Iterable<Event> getEventsByUser(@PathVariable(value = "userId") Integer userId) {
-        List<Event> events = new ArrayList<>();
-        getEventsByUser(userId).forEach(events::add);
-        // 0 --> no started
-        // 1 --> started
-        // 2 --> finished
-        // 3 --> no finished
-        for(Event e : events) {
-            int state = 0;
-            boolean done = e.getEventDone();
-            Date today = Date.valueOf(LocalDate.now());
-            if(today.before(e.getEventStartDate())){
-                state = 0;
-                e.setEventState(state);
-            }else if(!(today.before(e.getEventStartDate()) && today.after(e.getEventEndDate()))){
-                if(done) {
-                    state = 2;
-                }else{
-                    state = 1;
-                }
-                e.setEventState(state);
-            }else {
-                if(done) {
-                    state = 2;
-                }else{
-                    state = 3;
-                }
-                e.setEventState(state);
-            }
-        }
-        return events;
+        return eventRepository.getEventsByUser(userId);
     }
 
     @GetMapping(path = "/event/find/sorted/{userId}")
@@ -104,5 +75,26 @@ public class EventController {
         event.setEventMaxStreak(updatedEvent.getEventMaxStreak());
         event.setEventState(updatedEvent.getEventState());
         eventRepository.save(event);
+    }
+    @PatchMapping(path = "/event/update/state/{eventId}")
+    void updateEventState(@PathVariable Integer eventId) {
+        Event e = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
+        int state = 0;
+        boolean done = e.getEventDone();
+        Date today = Date.valueOf(LocalDate.now());
+        System.out.println(today);
+        System.out.println(e.getEventEndDate());
+        if (today.before(e.getEventStartDate())) {
+            state = 0;
+        } else if (!(today.before(e.getEventStartDate()) || today.after(e.getEventEndDate()))){
+            if(done) state = 2;
+            else state = 1;
+        } else {
+            if(done) state = 2;
+            else state = 3;
+        }
+        e.setEventState(state);
+        System.out.println(state);
+        eventRepository.save(e);
     }
 }
