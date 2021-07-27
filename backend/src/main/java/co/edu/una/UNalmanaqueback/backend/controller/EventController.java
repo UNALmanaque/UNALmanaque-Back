@@ -76,6 +76,12 @@ public class EventController {
         event.setEventState(updatedEvent.getEventState());
         eventRepository.save(event);
     }
+    @PatchMapping(path = "event/update/lastDate/{eventId}")
+    void updateEventLastDate (@RequestBody Event updatedEvent, @PathVariable Integer eventId){
+        Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
+        event.setEventLastDate(updatedEvent.getEventLastDate());
+        eventRepository.save(event);
+    }
     @PatchMapping(path = "/event/update/state/{eventId}")
     void updateEventState(@PathVariable Integer eventId) {
         Event e = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);

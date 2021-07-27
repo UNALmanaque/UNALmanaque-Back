@@ -15,7 +15,7 @@ public class Event {
     @Column
     private Date eventStartDate;
     @Column
-    private Date lastDate;
+    private Date eventLastDate;
     @Column
     private Date eventEndDate;
     @Column
@@ -129,11 +129,11 @@ public class Event {
     public Integer getEventMaxStreak() {
         return this.eventMaxStreak;
     }
-    public Date getLastDate() {
-        return lastDate;
+    public Date getEventLastDate() {
+        return eventLastDate;
     }
-    public void setLastDate(Date lastDate) {
-        this.lastDate = lastDate;
+    public void setEventLastDate(Date eventLastDate) {
+        this.eventLastDate = eventLastDate;
     }
     //Foreign Keys
     @ManyToOne
