@@ -15,6 +15,8 @@ public class Event {
     @Column
     private Date eventStartDate;
     @Column
+    private Date lastDate;
+    @Column
     private Date eventEndDate;
     @Column
     private Boolean eventRep;
@@ -103,34 +105,36 @@ public class Event {
     public void setEventWeek(Integer eventWeek) {
         this.eventWeek = eventWeek;
     }
-    public  void setEventDone(Boolean eventDone){ this.eventDone = eventDone;}
-    public Boolean getEventDone(){ return this.eventDone;}
-    public void setEventState(Integer eventState) { this.eventState = eventState; }
+    public  void setEventDone(Boolean eventDone){
+        this.eventDone = eventDone;
+    }
+    public Boolean getEventDone(){
+        return this.eventDone;
+    }
+    public void setEventState(Integer eventState) {
+        this.eventState = eventState;
+    }
     public Integer getEventState() {
-        /*
-        int ans = 0;
-        setState(ans);
-        LocalDate cur = LocalDate.now();
-        Date today = Date.valueOf(cur);
-        0 -> progress
-        1 -> finished
-        -1 -> no finished
-        if(today.after(this.eventStartDate) && today.before(this.eventStartDate)) {
-            ans = 0;
-        }else if(getDone()){
-            ans = 1;
-        }else{
-            ans = -1;
-        }
-        setState(ans);
-         */
         return this.eventState;
     }
-    public void setEventCurStreak(Integer eventCurStreak) { this.eventCurStreak = eventCurStreak; }
-    public Integer getEventCurStreak() { return this.eventCurStreak; }
-    public void setEventMaxStreak(Integer eventMaxStreak) {this.eventMaxStreak = eventMaxStreak; }
-    public Integer getEventMaxStreak() { return this.eventMaxStreak; }
-
+    public void setEventCurStreak(Integer eventCurStreak) {
+        this.eventCurStreak = eventCurStreak;
+    }
+    public Integer getEventCurStreak() {
+        return this.eventCurStreak;
+    }
+    public void setEventMaxStreak(Integer eventMaxStreak) {
+        this.eventMaxStreak = eventMaxStreak;
+    }
+    public Integer getEventMaxStreak() {
+        return this.eventMaxStreak;
+    }
+    public Date getLastDate() {
+        return lastDate;
+    }
+    public void setLastDate(Date lastDate) {
+        this.lastDate = lastDate;
+    }
     //Foreign Keys
     @ManyToOne
     @JoinColumn(name = "categoryId")
