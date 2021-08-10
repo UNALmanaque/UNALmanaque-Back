@@ -2,7 +2,6 @@ package co.edu.una.UNalmanaqueback.backend.controller;
 
 import co.edu.una.UNalmanaqueback.backend.model.Event;
 import co.edu.una.UNalmanaqueback.backend.repository.EventRepository;
-import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
@@ -37,6 +36,7 @@ public class EventController {
         events.sort(Comparator.comparing(Event::getEventState));
         return events;
     }
+
     @DeleteMapping(path = "/event/delete/{eventId}")
     public @ResponseBody void deleteEventById(@PathVariable(value = "eventId") Integer eventId){
         eventRepository.deleteById(eventId);
@@ -80,6 +80,12 @@ public class EventController {
     void updateEventLastDate (@RequestBody Event updatedEvent, @PathVariable Integer eventId){
         Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
         event.setEventLastDate(updatedEvent.getEventLastDate());
+        eventRepository.save(event);
+    }
+    @PatchMapping(path = "event/update/days/{eventId}")
+    void updateEventDays(@RequestBody Event updatedEvent, @PathVariable Integer eventId){
+        Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
+        event.setEventDays(updatedEvent.getEventDays());
         eventRepository.save(event);
     }
     @PatchMapping(path = "/event/update/state/{eventId}")

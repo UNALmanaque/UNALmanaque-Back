@@ -37,6 +37,8 @@ public class Event {
     @Column
     private Integer eventMaxStreak;
     @Column
+    private Integer eventDays;
+    @Column
     private Boolean eventDone;
 
     public Integer getEventId() {
@@ -134,6 +136,12 @@ public class Event {
     }
     public void setEventLastDate(Date eventLastDate) {
         this.eventLastDate = eventLastDate;
+    }
+    public Integer getEventDays() {
+        return eventDays;
+    }
+    public void setEventDays(Integer eventDays) {
+        this.eventDays = eventDays;
     }
     //Foreign Keys
     @ManyToOne
