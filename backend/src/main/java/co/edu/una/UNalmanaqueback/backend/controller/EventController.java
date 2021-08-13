@@ -74,6 +74,7 @@ public class EventController {
         event.setEventCurStreak(updatedEvent.getEventCurStreak());
         event.setEventMaxStreak(updatedEvent.getEventMaxStreak());
         event.setEventState(updatedEvent.getEventState());
+        event.setEventDays(updatedEvent.getEventDays());
         eventRepository.save(event);
     }
     @PatchMapping(path = "event/update/lastDate/{eventId}")
