@@ -1,10 +1,9 @@
 package co.edu.una.UNalmanaqueback.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
+import java.util.*;
+import javax.persistence.ElementCollection;
 
 @Entity
 @Table(name = "Event", schema = "unalmanaquedb")
@@ -40,6 +39,9 @@ public class Event {
     private Integer eventDays;
     @Column
     private Boolean eventDone;
+    @ElementCollection
+    @Column
+    private List <String> eventCompletionList;
 
     public Integer getEventId() {
         return eventId;
@@ -142,6 +144,12 @@ public class Event {
     }
     public void setEventDays(Integer eventDays) {
         this.eventDays = eventDays;
+    }
+    public List<String> getEventCompletionList() {
+        return eventCompletionList;
+    }
+    public void setEventCompletionList(List<String> eventCompletionList) {
+        this.eventCompletionList = eventCompletionList;
     }
     //Foreign Keys
     @ManyToOne
