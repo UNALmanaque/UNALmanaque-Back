@@ -41,7 +41,7 @@ public class Event {
     private Boolean eventDone;
     @ElementCollection
     @Column
-    private List <String> eventCompletionList;
+    private List <Date> eventCompletionList;
 
     public Integer getEventId() {
         return eventId;
@@ -145,11 +145,11 @@ public class Event {
     public void setEventDays(Integer eventDays) {
         this.eventDays = eventDays;
     }
-    public List<String> getEventCompletionList() {
+    public List<Date> getEventCompletionList() {
         return eventCompletionList;
     }
-    public void setEventCompletionList(List<String> eventCompletionList) {
-        this.eventCompletionList = eventCompletionList;
+    public void setEventCompletionList(Date dateCompleted) {
+        this.eventCompletionList.add(dateCompleted);
     }
     //Foreign Keys
     @ManyToOne

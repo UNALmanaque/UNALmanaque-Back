@@ -38,7 +38,7 @@ public class EventController {
     }
 
     @GetMapping(path = "/event/find/completed/{eventId}")
-    public @ResponseBody List<String> getCompletionDate(@PathVariable(value = "eventId") Integer eventId) {
+    public @ResponseBody List<Date> getCompletionDate(@PathVariable(value = "eventId") Integer eventId) {
         Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
         return event.getEventCompletionList();
     }
@@ -98,7 +98,7 @@ public class EventController {
     @PatchMapping(path = "/event/update/completed/{eventId}")
     void updateCompletionDate(@RequestBody Event updatedEvent, @PathVariable Integer eventId) {
         Event event = eventRepository.findById(eventId).orElseThrow(NullPointerException::new);
-        event.setEventCompletionList(event.getEventCompletionList());
+        event.setEventCompletionList(updatedEvent.getEventLastDate());
         eventRepository.save(event);
     }
     @PatchMapping(path = "/event/update/state/{eventId}")
