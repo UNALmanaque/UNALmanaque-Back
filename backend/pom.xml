@@ -9,6 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 		
 	</parent>
+	<!-- lookup parent from repository -->
 	<groupId>co.edu.una.UNalmanaqueback</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
